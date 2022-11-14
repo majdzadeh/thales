@@ -17,12 +17,46 @@ The following dependencies should be installed before running the script:
 
 2. [streamlit](https://streamlit.io/)
 
+3. [pipenv](https://pipenv-fork.readthedocs.io/en/latest/)
+
 ## Execution
 
 Run the following command to execute the script:
 
 ```bash
-$ streamlit run chain.py
+$ streamlit run chain.py --server.address 127.0.0.1
 ```
 
 If you are using a graphical operating environment, the above command will open up system's default browser and displays the web-based user interface.
+
+## Development
+
+* Setup public key authentication for Github:
+  
+  ```bash
+  ssh-keygen -t ed25519 -C "ali.majdzadeh@gmail.com"
+  ssh-agent bash -c 'ssh-add /root/.ssh/id_ed25519_gmail'
+  ```
+
+* Clone the repository:
+  
+  ```bash
+  git clone git@github.com:majdzadeh/thales.git
+  ```
+
+* Activate the environment:
+  
+  ```bash
+  pipenv shell
+  ```
+
+* Install the dependencies (one-off task):
+  
+  ```bash
+  pip install streamlit
+  pip install pandas_datareader
+  ```
+
+## Deployment
+
+[Heroku](https://www.heroku.com/) is used for deployment.
