@@ -1,13 +1,18 @@
 ## What is this?
 
-This tool provides stock Options chain data using Yahoo Finance free Options data API service.
+This tool provides stock Options chain data using the following providers:
+
+* Yahoo Finance free Options data API service
+
+* Intrinio Options data API service
 
 ## How to
 
 1. Enter stock ticker in ``Ticker``
-2. Hit ``Submit``
-3. Select an expiry date from the ``Expiry date`` list
-4. Call and Put Options will be displayed for the given ticker and expiry date
+2. Select the provider from the ``Provider`` list
+3. Hit ``Submit``
+4. Select an expiry date from the ``Expiry date`` list
+5. Call and Put Options will be displayed for the given ticker and expiry date
 
 ## Dependencies
 
@@ -18,6 +23,8 @@ The following dependencies should be installed before running the script:
 2. [streamlit](https://streamlit.io/)
 
 3. [pipenv](https://pipenv-fork.readthedocs.io/en/latest/)
+
+4. [GitHub - intrinio/python-sdk: The Official Intrinio API Python SDK](https://github.com/intrinio/python-sdk)
 
 ## Execution
 
@@ -55,8 +62,9 @@ If you are using a graphical operating environment, the above command will open 
   ```bash
   pip install streamlit
   pip install pandas_datareader
+  pip install intrinio-sdk
   ```
 
 ## Deployment
 
-[Heroku](https://www.heroku.com/) is used for deployment.
+[ngrok](https://ngrok.com/) is used for deployment.
