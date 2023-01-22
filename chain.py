@@ -12,6 +12,11 @@ intrinio.ApiClient().configuration.api_key['api_key'] = 'OjFkOWRlYmVhYjU1ZGIyNmI
 intrinio.ApiClient().allow_retries(True)
 intrinio_options = intrinio.OptionsApi()
 
+@st.cache
+def fetch_tickers():
+    response = intrinio_options.get_all_options_tickers()
+    return response.tickers
+
 def fetch_chain(ticker: str, provider: str):
     if ticker is None or ticker == '':
         st.error('Symbol not provided')
@@ -64,11 +69,11 @@ def main():
     with open('README.md', 'r') as readme:
         st.sidebar.markdown(readme.read())
 
-    ticker = st.text_input('Ticker', 
-                           help='Stock symbol')
+    ticker = st.selectbox(label='Ticker',
+                          options=fetch_tickers())
 
-    provider = st.selectbox('Provider', 
-                            ('Yahoo', 'Intrinio'))
+    provider = st.selectbox(label='Provider', 
+                            options=('Yahoo', 'Intrinio'))
 
     clicked = st.button('Submit', 
                         on_click=fetch_chain,
